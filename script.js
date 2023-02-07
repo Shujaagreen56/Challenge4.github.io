@@ -12,7 +12,7 @@ var second = 18
 //const timeRemaining = new Number(0)
 
 //let timerId 
-console.log(secondsLeft.innerHTML)
+console.log(secondsLeft); 
 
 function countDown(){
 //const timeLeft = 0; 
@@ -20,11 +20,11 @@ second -=1
 //const timeDone = timeOut - timeRemaining
 console.log(second)
 secondsLeft.innerHTML = second 
-console.log(secondsLeft.innerHTML)
-if(second = 0){
-    secondsLeft.innerHTML = 'Times up!'
-      clearInterval(setInterval)
+console.log(secondsLeft); 
 
+if(second = 0){
+    secondsLeft.innerHTML = 'Times up!';
+      clearInterval(this.interval);
 }
 
 //if (timeDone <= 0 ){
@@ -37,14 +37,14 @@ if(second = 0){
 //countDown.innerHTML = minutes + 'minutes' + seconds + 'seconds'
  }
  
- const timer = setInterval(countDown, 1000)
-
- 
+ const setInterval = secondsLeft.innerHTML(countDown, 1000) 
 
 
 //function windDown(){
   //  alert('Times up!') }
  //setTimeout(windDown, 50000) 
+
+
 
 
 
