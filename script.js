@@ -1,56 +1,45 @@
-// Selects element by class
 
 var timeEl = document.querySelector(".time");
-// Selects element by id
 var mainEl = document.getElementById("main");
 var secondsLeft = document.getElementById('countdown');
 var second = 18 
-//const minute = second * 60; 
-//const timeOut = minute * 5;
-//const timeRemaining = new Number(0)
-//let timerId
-//const minute = second * 60; 
-//const timeOut = minute * 5;
-//const timeRemaining = new Number(0)
-//let timerId
-//const minute = second * 60; 
-//const timeOut = minute * 5;
-
-//const timeRemaining = new Number(0)
-
-//let timerId 
-
-
-
+//var countingDown = document.getElementById('#countdown'); 
 function countDown(){
-//const timeLeft = 0; 
 second -=1 
-//const timeDone = timeOut - timeRemaining
 console.log(second)
-secondsLeft.innerHTML = seconds
+secondsLeft.innerHTML = second
 console.log(secondsLeft)
 
-if(second = 0){
+if(second == 0){
     secondsLeft.innerHTML = 'Times up!'
-      clearInterval()
-console.log(secondsLeft.innerHTML)}}
-
-//if (timeDone <= 0 ){
-  //  countDown.innerHTML = "End of Quiz"
-   // clearInterval(timerId)
-  //  return }
-
-//const minutes = Math.floor(minute); 
-//const seconds = Math.floor(timeDone % minute) / second ; 
-//countDown.innerHTML = minutes + 'minutes' + seconds + 'seconds'
+      clearInterval(setInterval)
+console.log(secondsLeft.innerHTML)}
  
- 
- var setInterval = countDown.innerHTML(countDown, 1000) 
+ var setInterval = secondsLeft.innerHTML(countDown, 1000) }
 
 
-//function windDown(){
-  //  alert('Times up!') }
- //setTimeout(windDown, 50000) 
+ var quizlet = document.getElementById('question')
+  var answer = document.getElementById('answer')
+  var answer1 = document.getElementById('answer1')
+  var answer2 = document.getElementById('answer2')
+  var correct = document.getElementById('correct')
+
+  function q1 (){
+    quizlet.innerHTML = '<p>What kind of language is Javascript ?</p>'
+    answer.innerHTML = '<p>Love language</p>'
+    answer1.innerHTML = '<p>Foreign language</p>'
+    answer2.innerHTML = '<p>Dead language</p>'
+    correct.innerHTML = '<p>Coding Language </p>'
+
+
+
+
+
+
+
+  }
+
+
 
 
 

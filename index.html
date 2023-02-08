@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="Stylesheet" href="style.css"> 
     <title>Quiz on Javascript</title>
 </head>
+
+
 <header>
         <div class="reset bar">
             <nav>
@@ -24,12 +27,16 @@
     <div id="main"></div>
     <div class="Container">
         <div id="question-container" class="hide">
-            <div id="question">Question</div>
+            <div id="question">What kind of language is javascript ?</div>
             <div id="answer-buttons" class="btn-grid">
-                <button class="btn">A</button>
-                <button class="btn">B</button>
-                <button class="btn">C</button>
-                <button class="btn">D</button>
+                <input type="checkbox">A 
+                <button class="btn" id="answer">Love</button>
+                <input type="checkbox">B
+                <button class="btn" id="answer1">Foreign</button>
+                <input type="checkbox">C
+                <button class="btn" id="answer2">Dead</button>
+                <input type="checkbox">C 
+                <button class="btn" id="correct">Coding</button>
             </div>
         </div>
         <div class="controls">
