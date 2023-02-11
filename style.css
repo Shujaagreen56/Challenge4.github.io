@@ -1,11 +1,17 @@
- .body {
-background-color: blue;
+ body { color: rgb(43, 58, 58);
+background-color: rgb(231, 231, 238);
  }
  
 
- .Button  {
-position: absolute;
+.btn-grid Button  {
+    display: center;
+position: relative;
 margin-top: 10px;
-background-color: rgb(237, 233, 241);
-color: cadetblue;
+color: rgb(50, 5, 95);
+background-color: rgb(231, 221, 238);
+}
+
+
+.controls button { color: rgb(18, 34, 126);
+background-color: beige;
 }
