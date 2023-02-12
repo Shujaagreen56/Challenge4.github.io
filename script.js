@@ -32,7 +32,9 @@ var questionContainer = document.querySelector("#question-container")
 var something = document.querySelector("#title");
 var answerSpace = document.querySelector("#Answers");
 var nextButton = document.querySelector("#next-btn");
+var submitButton = document.querySelector("#Submit-btn")
 nextButton.onclick = createQuestions;
+
 
 
 function createQuestions() {
@@ -45,24 +47,14 @@ function createQuestions() {
   answerSpace.innerHTML = "";
   for (var i = 0; i < options.length; i++) {
     var Answer = options[i];
-    var button = document.createElement("button" );
+    var button = document.createElement("button");
     button.setAttribute("class", "btn");
     button.innerHTML = Answer;
-    answerSpace.appendChild(button);
+    answerSpace.appendChild(button); 
+    button.addEventListener("click", () => button.style.backgroundColor = 'green'); 
+    onclick = "scores()"
+  }}
     
-    
-    button.addEventListener("click", () => button.style.backgroundColor = 'green'); }
- 
-  }
-    //function scores(userChoice, Answer){ 
-    //if( userChoice = Answer ){
-      // score = wins +1
-    //}
-    //if ( userChoice !== Answer){
-      //score = losses +1
-    //}}
-   
-
 
      //colorChange()
   
@@ -77,7 +69,7 @@ function createQuestions() {
 //var timeEl = document.querySelector(".time");
 //var mainEl = document.getElementById("main");
 var secondsLeft = document.getElementById('countdown');
-var second = 10;
+var second = 180;
 if(second===0)
   clearInterval("#countdown"); 
 var countingDown = document.getElementById('#countdown'); 
@@ -87,9 +79,8 @@ startButton.onclick = start;
 function start() {
   var interval = setInterval(countDown, 1000);
   createQuestions();
-
+scores(); 
 }
-
 
 function countDown() {
   second--;
@@ -110,20 +101,6 @@ function countDown() {
 
   // var setInterval = secondsLeft.innerHTML(countDown, 1000)
 };
-
-var goodBoy = document.querySelector('#correct');
-var goodAnswer = document.querySelector('#submit-btn');
-addEventListener("click", goodAnswer);
-// var goodGirl = document.getElementsByid().addEventListener
-function q1() {
-  if (goodBoy === true) {
-    Window.Alert('you win a million quarters');
-  }
-}
-
-//else(window.Alert s('you lose nothing'); 
-
-//start();
 
 
 
