@@ -9,18 +9,18 @@ var questions = [
   {
     title: "what is javascript used for ?",
     correctAnswer: "functionality",
-    options: ["Style", "Framework", "fun", "functionality"]
+    options: ["Style", "Framework", "fun",]
   },
   {
     title: "what kind of language is javascript ?",
     correctAnswer: "Coding Language",
-    options: ["Love", "Dead", "Foreign", "Coding Language"]
+    options: ["Love", "Dead", "Foreign",]
   },
   // add the rest of the questions, add the correct answer answer. click event on the answers to change background color
   {
     title: "What is one other CSS framework besides bootstrap ?",
     correctAnswer: "Pure",
-    options: ["Shoestrap", "Sandalstrap", "Airforce1strap", "Pure"]
+    options: ["Shoestrap", "Sandalstrap", "Airforce1strap",]
   }
 ];
 
@@ -30,6 +30,7 @@ var current = 0;
 var questionContainer = document.querySelector("#question-container")
 var something = document.querySelector("#title");
 var answerSpace = document.querySelector("#Answers");
+var goodAnswerSpace = document.querySelector("#goodAnswers"); 
 var nextButton = document.querySelector("#next-btn");
 var submitButton = document.querySelector("#Submit-btn");
 var secondsLeft = document.getElementById('countdown');
@@ -38,7 +39,6 @@ var countingDown = document.getElementById('#countdown');
 var startButton = document.getElementById('start-btn');
 
 // create global variable for right answer
-let correctAnswer = questions.correctAnswer
 
 // create global for timer
 let interval;
@@ -49,7 +49,8 @@ let currentQuestion;
 let buttonClicked;
 let correctButton;
 
-var Answers = questions.options.splice(4,1)
+let goodAnswer; 
+// = ('green'); }
 
 function createQuestions() {
   console.log('inside createQuestions');
@@ -59,17 +60,25 @@ function createQuestions() {
   something.innerHTML = title;
   correctAnswer = currentQuestion.correctAnswer;
    options = currentQuestion.options;
-  answerSpace.innerHTML = "";
+  answerSpace.innerHTML = ""; 
   for (var i = 0; i < options.length; i++) {
-     Answer = options[i];
-   button = document.createElement("button");
-    button.setAttribute("class", "btn");
-    button.innerHTML = Answer;
-    answerSpace.appendChild(button);
+     Answer = options[i]; 
+     //goodAnswer.concat.innerHTML(button);
+   greenButton = document.createElement("button");
+    greenButton.setAttribute("id", "btn");
+    greenButton.innerHTML = Answer;
+    answerSpace.appendChild(greenButton);}
+    for( var i =0; i < correctAnswer.length; i++){
+    goodAnswer = correctAnswer[i]; 
+     button = document.createElement("button");
+     button.setAttribute("class","btn");
+    button.innerHTML = goodAnswer;
+    answerSpace.appendChild(button);} 
   buttonClicked = button.addEventListener("click", checkForAnswer);
-    buttonClicked = Answer
+    buttonClicked = Answer 
+    correctButton = button.addEventListener("click",checkForAnswer); 
+     correctButton = goodAnswer
   }
-}
 
 //colorChange()
 // document.querySelector("#Answers").addEventListener("click", colorChange); 
@@ -86,17 +95,16 @@ function checkForAnswer(score) {
  // console.log(options)
   // console.log(correctAnswer);
   score = [ correctButton + 1 ]; 
-  //if( correctButton == true ) {
-    //console.log("right Answer")
+  if( button == correctAnswer ) {
+    console.log("right Answer")
 //document.getElementById('#button').backgroundColor = ('green') 
     // what do you want to have happen if the user selected thr right answer
- // } else ( options.splice(4,1) == false)
-    //console.log("wrong"); 
+  } else ( button === Answer)
+    console.log("wrong")
     // what now
- if(buttonClicked == Answers )
- console.log(score)
- 
   }
+
+ // console.log(correctAnswer); 
 
 function start() {
   interval = setInterval(countDown, 1000);
