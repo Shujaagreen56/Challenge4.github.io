@@ -2,35 +2,40 @@
 // number of right answers 
 var wins = 0;
 var losses = 0;
-var winrate = 0;
+var winRate = 0;
+var currentScore = 0; 
+
+function highScore(){
+ window.alert('Your final score is' + winRate + ' /3' );
+ }; 
 
 //quiz questions array. 
 var questions = [
   {
     title: "what is javascript used for ?",
     correctAnswer: "functionality",
-    options: ["Style", "Framework", "fun",]
+    options: ["Style", "Framework", "fun", "functionality"]
   },
   {
     title: "what kind of language is javascript ?",
     correctAnswer: "Coding Language",
-    options: ["Love", "Dead", "Foreign",]
+    options: ["Love", "Coding Language", "Dead", "Foreign",]
   },
   // add the rest of the questions, add the correct answer answer. click event on the answers to change background color
   {
     title: "What is one other CSS framework besides bootstrap ?",
     correctAnswer: "Pure",
-    options: ["Shoestrap", "Sandalstrap", "Airforce1strap",]
+    options: ["Pure", "Shoestrap", "Sandalstrap", "Airforce1strap",]
   }
 ];
 
 // these are variables refercing HTML elements. 
 // current is the index for the questions array. 
-var current = 0;
+var currentIndex = 0;
 var questionContainer = document.querySelector("#question-container")
-var something = document.querySelector("#title");
+var questionTitle = document.querySelector("#title");
 var answerSpace = document.querySelector("#Answers");
-var goodAnswerSpace = document.querySelector("#goodAnswers"); 
+var goodAnswerSpace = document.querySelector("#goodAnswers");
 var nextButton = document.querySelector("#next-btn");
 var submitButton = document.querySelector("#Submit-btn");
 var secondsLeft = document.getElementById('countdown');
@@ -42,43 +47,51 @@ var startButton = document.getElementById('start-btn');
 
 // create global for timer
 let interval;
-let button; 
-let Answer;
-let options; 
-let currentQuestion; 
+let button;
+let answerChoicesArray;
+let currentQuestion;
 let buttonClicked;
 let correctButton;
-
-let goodAnswer; 
+let goodAnswer;
+let correctAnswer;
 // = ('green'); }
 
 function createQuestions() {
+  //clear out previous answer choices 
+  answerSpace.innerHTML = "";
   console.log('inside createQuestions');
-   currentQuestion = questions[current];
-  current++
-  var title = currentQuestion.title;
-  something.innerHTML = title;
+  //update current question 
+  currentQuestion = questions[currentIndex];
+  // add one to the current index
+  currentIndex++
+  //update the text of the current question 
+  
+  questionTitle.textContent = currentQuestion.title;
+  // set the correct answer for the current question we're on
   correctAnswer = currentQuestion.correctAnswer;
-   options = currentQuestion.options;
-  answerSpace.innerHTML = ""; 
-  for (var i = 0; i < options.length; i++) {
-     Answer = options[i]; 
-     //goodAnswer.concat.innerHTML(button);
-   greenButton = document.createElement("button");
-    greenButton.setAttribute("id", "btn");
-    greenButton.innerHTML = Answer;
-    answerSpace.appendChild(greenButton);}
-    for( var i =0; i < correctAnswer.length; i++){
-    goodAnswer = correctAnswer[i]; 
-     button = document.createElement("button");
-     button.setAttribute("class","btn");
-    button.innerHTML = goodAnswer;
-    answerSpace.appendChild(button);} 
-  buttonClicked = button.addEventListener("click", checkForAnswer);
-    buttonClicked = Answer 
-    correctButton = button.addEventListener("click",checkForAnswer); 
-     correctButton = goodAnswer
+  console.log('correctAnswer is', correctAnswer);
+  answerChoicesArray = currentQuestion.options;
+  // for the current question create the answer choice buttons 
+  for (var i = 0; i < answerChoicesArray.length; i++) {
+    var greenButton = document.createElement("button");
+    greenButton.textContent = answerChoicesArray[i];
+    greenButton.setAttribute("class", "btn-answer-choice");
+    answerSpace.appendChild(greenButton);
   }
+  // for (var i = 0; i < correctAnswer.length; i++) {
+  //   goodAnswer = correctAnswer[i];
+  //   button = document.createElement("button");
+  //   button.setAttribute("class", "btn");
+  //   button.innerHTML = goodAnswer;
+  //   answerSpace.appendChild(button);
+  // }
+  document.querySelectorAll(".btn-answer-choice").forEach( btn => btn.addEventListener("click", checkForAnswer));
+
+  // buttonClicked = button.addEventListener("click", checkForAnswer);
+  // buttonClicked = Answer
+  // correctButton = button.addEventListener("click", checkForAnswer);
+  // correctButton = goodAnswer
+}
 
 //colorChange()
 // document.querySelector("#Answers").addEventListener("click", colorChange); 
@@ -90,21 +103,36 @@ function createQuestions() {
 //var timeEl = document.querySelector(".time");
 //var mainEl = document.getElementById("main");
 
-function checkForAnswer(score) {
- // console.log('Checking for Answer');
- // console.log(options)
+function checkForAnswer(e) {
+  console.log('answer choice clicked');
+  //target is the thing that was clicked on, e is the event 
+  const target = e.target;
+  const value = target.textContent
+  console.log('The e.target.textContent is', value);
+  // console.log('Checking for Answer');
+  // console.log(options)
   // console.log(correctAnswer);
-  score = [ correctButton + 1 ]; 
-  if( button == correctAnswer ) {
-    console.log("right Answer")
-//document.getElementById('#button').backgroundColor = ('green') 
+  //score = [correctButton + 1];
+
+  if (value == correctAnswer) {
+    console.log("right Answer");
+      winRate ++
+//currentScore = winRate * 33.33
+   // console.log(currentScore)
+    //winRate = currentScore
+   // console.log(currentScore + ('%'))
+    //document.getElementById('#button').backgroundColor = ('green') 
     // what do you want to have happen if the user selected thr right answer
-  } else ( button === Answer)
+  } else {
     console.log("wrong")
-    // what now
   }
 
- // console.log(correctAnswer); 
+  // move on to the next question
+  createQuestions();
+ 
+}
+
+// console.log(correctAnswer); 
 
 function start() {
   interval = setInterval(countDown, 1000);
@@ -121,7 +149,9 @@ function countDown() {
     secondsLeft.textContent = 'Times up!';
     // console.log(secondsLeft.textContent)
     clearInterval(interval)
+    highScore(); 
   }
+  
 }
 
 function selectQuestion() {
@@ -140,7 +170,8 @@ function selectQuestion() {
 }
 
 startButton.onclick = start;
-nextButton.onclick = createQuestions;
+
+// nextButton.onclick = createQuestions;
 
 
 
